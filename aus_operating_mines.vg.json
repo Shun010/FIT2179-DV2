@@ -28,7 +28,7 @@
         },
         {
             "data": {
-                "url": "datasets/operating_mines_feb2015.csv"
+                "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/operating_mines_feb2015.csv"
             },
             "mark": {
                 "type": "circle",
