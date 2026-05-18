@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 340,
+  "height": 340,
+  "title": "Gold production by State in Australia, from 1851 to 2021",
+  "projection": {"type": "mercator"},
+  "params": [
+    {
+      "name": "year_selection",
+      "value": 2021,
+      "bind": {
+        "input": "range",
+        "min": 1851,
+        "max": 2021,
+        "step": 1,
+        "name": "Year: "
+      }
+    }
+  ],
+  "layer": [ 
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
+        "format": {
+          "type": "topojson",
+          "feature": "STE_2016_AUST"
+        }
+       },
+      "transform": [
+        {
+          "calculate": "'Data is not available in ' + datum.properties.STE_NAME16",
+          "as": "note"
+        }
+      ],
+      "mark": {
+          "type": "geoshape",
+          "fill": "#ddd",
+          "stroke": "white",
+          "strokeWidth": 1
+      },
+      "encoding": {"tooltip": {"field": "note", "type": "nominal"}}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/gold_prod_1851_2021_byState.csv"
+      },
+      "transform": [
+        {
+          "lookup": "State",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
+              "format": {
+                "type": "topojson",
+                "feature": "STE_2016_AUST"
+              }
+            },
+            "key": "properties.STE_NAME16"
+          },
+          "as": "geo"
+        },
+        {"filter": "datum.YEAR == year_selection"}
+      ],
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "field": "Production",
+          "type": "quantitative",
+          "scale": {"scheme": "yelloworangered"},
+          "title": "Production (tonnes)"
+        },
+        "tooltip": [
+          {"field": "State", "type": "nominal", "title": "State"},
+          {"field": "Production", "type": "quantitative", "title": "Production (tonnes)", "format": ","},
+          {"field": "YEAR", "type": "quantitative", "title": "Year"}
+        ]
+      }
+    }
+  ]
+}
+  

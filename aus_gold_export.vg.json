@@ -1,0 +1,66 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Top 10 Australia Gold Export Country",
+    "data": {
+        "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/au_gold_export.csv"
+    },
+    "transform": [
+        {
+            "calculate": "toNumber(datum['trade value'])",
+            "as": "trade_value_num"
+        },
+        {
+            "window": [{"op": "rank", "as": "rank"}],
+            "sort": [{"field": "trade_value_num", "order": "descending"}]
+        },
+        {
+            "filter": "datum.rank <= 10"
+        },
+        {
+            "window": [{"op": "sum", "field": "trade_value_num", "as": "total"}]
+        },
+        {
+            "calculate": "round(datum.trade_value_num / datum.total * 1000) / 10 + '%'",
+            "as": "percentage"
+        }
+    ],
+    "layer": [
+        {
+            "mark": {"type": "arc"},
+            "encoding": {
+                "theta": {
+                    "field": "trade_value_num", 
+                    "type": "quantitative"
+                },
+                "order": {
+                    "field": "trade_value_num",
+                    "type": "quantitative",
+                    "sort": "descending"
+                },
+                "color": {
+                    "field": "country", 
+                    "type": "nominal"
+                }
+            }
+        },
+        {
+            "mark": {"type": "text", "radius": 90},
+            "encoding": {
+                "theta": {
+                    "field": "trade_value_num",
+                    "type": "quantitative",
+                    "stack": true
+                },
+                "order": {
+                    "field": "trade_value_num",
+                    "type": "quantitative",
+                    "sort": "descending"
+                },
+                "text": {
+                    "field": "percentage",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}

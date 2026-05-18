@@ -1,0 +1,10 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300,
+    "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_GDP_1789-2025.csv"},
+    "mark": "line",
+    "encoding": {
+        "x": {"field": "Year", "type": "quantitative"},
+        "y": {"field": "GDP", "type": "quantitative"}
+    }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Gold Price vs Production Volume",
+  "width": 400, "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/gold_price_production.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "timeUnit": "year",
+        "field": "Date",
+        "range": [2000, 2025]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+        "field": "Date",
+        "type": "temporal",
+        "timeUnit": "yearquarter",
+        "axis": {"format": "%Y", "title": null}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"stroke": "#e7c81d", "type": "line", "interpolate": "monotone"},
+      "encoding": {
+        "y": {
+          "field": "Gold Price (A$/oz)",
+          "type": "quantitative",
+          "title": "Gold Price (A$/oz)",
+          "axis": {"titleColor":"#e7c81d"}
+        }
+      }
+    },
+    {
+      "mark": {"stroke": "#85A9C5", "type": "line", "interpolate": "monotone"},
+      "encoding": {
+        "y": {
+          "field": "Production Volume (t)",
+          "type": "quantitative",
+          "title": "Gold Production Volume (t)",
+          "axis": {"titleColor":"#85A9C5"}
+        }
+      }
+    }
+  ],
+  "resolve": {"scale": {"y": "independent"}}
+}
+

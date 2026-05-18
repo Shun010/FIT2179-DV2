@@ -1,0 +1,35 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width":200,
+    "title": "Gold Demand",
+    "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/gold_usage.csv"},
+    "transform": [
+        {
+        "filter": "year(datum.Date) >= 2010"
+        }
+    ],
+    "mark": "bar",
+    "encoding": {
+        "x": {
+            "timeUnit": "yearmonth",
+            "field": "Date",
+            "type": "ordinal",
+            "title": "Year"
+        },
+        "y": {
+            "aggregate": "sum",
+            "field": "Value",
+            "type": "quantitative",
+            "title": "Gold Demand (tonnes)"
+        },
+        "color": {
+            "field": "Category",
+            "type": "nominal",
+            "scale": {
+                "domain": ["Jewellery Fabrication", "Technology", "Investment", "Central Bank and Other Institutions"],
+                "range": ["#e7ba52", "#c7c7c7", "#aec7e8", "#1f77b4", "#9467bd"]
+        },
+        "title": "Sector"
+        }
+    }
+}

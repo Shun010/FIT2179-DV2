@@ -1,0 +1,20 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Gold Exploration Expenditure",
+    "width": 340, "height": 400,
+    "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/aus_exploration_expenditure.csv"},
+    "mark": "area",
+    "encoding": {
+        "x": {
+        "timeUnit": "yearmonth", "field": "date",
+        "axis": {"format": "%Y"}
+        },
+        "y": {
+        "aggregate": "sum", "field": "expenditure"
+        },
+        "color": {
+            "field": "State",
+            "scale": {"scheme": "category20b"}
+        }
+    }
+}

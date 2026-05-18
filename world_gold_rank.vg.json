@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 350,
+    "data": {
+        "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/world_gold_production_2024.csv"
+    },
+    "title": "Top 10 Gold-Producing Countries in 2024",
+    "transform": [
+        {
+            "window": [{"op": "rank", "as": "rank"}],
+            "sort": [{"field": "gold production", "order": "descending"}]
+        },
+        {
+            "filter": "datum.rank <= 10"
+        }
+    ],
+    "mark": "bar",
+    "encoding": {
+        "y": {
+            "field": "country", 
+            "type": "nominal",
+            "sort": "-x",
+            "title": "Country"
+        },
+        "x": {
+            "field": "gold production", 
+            "type": "quantitative",
+            "title": "Gold Production (tonnes)"
+        },
+        "color": {
+            "condition": {
+                "test": "datum.country === 'Australia'",
+                "value": "#FFD700"
+            },
+            "value": "#A9A9A9"
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "The Consumer Price Index from 1850 to 1890",
+    "width": 400,
+    "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_CPI_1789-2025.csv"},
+    "mark": "line",
+    "encoding": {
+        "x": {"field": "Year", "type": "quantitative"},
+        "y": {"field": "The Consumer Price Index", "type": "quantitative"}
+    },
+    "transform": [
+        {"filter": "datum.Year >= 1800 && datum.Year <= 1890"}
+    ]
+}

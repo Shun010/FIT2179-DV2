@@ -1,0 +1,14 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Population in Australia, from 1800 to 1890",
+    "width": 300,
+    "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/population_history_AU.csv"},
+    "mark": "line",
+    "encoding": {
+        "x": {"field": "Year", "type": "quantitative"},
+        "y": {"field": "Population", "type": "quantitative"}
+    },
+    "transform": [
+        {"filter": "datum.Year >= 1800 && datum.Year <= 1890"}
+    ]
+}

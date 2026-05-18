@@ -1,0 +1,22 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Ore Grade by Mining Era (g/t Au)",
+    "width": 350,
+    "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/ore_grade_history.csv"},
+    "mark": "boxplot",
+    "encoding": {
+        "x": {
+            "field": "era", "type": "nominal",
+            "axis": {
+                "labelAngle": -45
+            }
+        },
+        "y": {
+            "field": "grade_Au",
+            "type": "quantitative"
+        }
+    },
+    "transform": [
+        {"filter": "datum.grade_Au <= 30"}
+    ]
+}

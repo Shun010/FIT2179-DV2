@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 450,
+    "height": 300,
+    "title": "Operating mines in Australia in 2015",
+    "layer": [ 
+        {
+        "data": {
+            "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
+            "format": {
+            "type": "topojson",
+            "feature": "STE_2016_AUST"
+            }
+        },
+        "transform": [
+            {
+            "calculate": "'Data is not available in ' + datum.properties.STE_NAME16",
+            "as": "note"
+            }
+        ],
+        "mark": {
+            "type": "geoshape",
+            "fill": "#ddd",
+            "stroke": "white",
+            "strokeWidth": 1
+        },
+        "encoding": {"tooltip": {"field": "note", "type": "nominal"}}
+        },
+        {
+            "data": {
+                "url": "datasets/operating_mines_feb2015.csv"
+            },
+            "mark": {
+                "type": "circle",
+                "opacity": 0.5,
+                "size": 30,
+                "color": "orange"
+            },
+            "encoding": {
+                "longitude": {"field": "Longitude", "type": "quantitative"},
+                "latitude": {"field": "Latitude", "type": "quantitative"},
+                "tooltip": [
+                    {"field": "Name", "type": "nominal"},
+                    {"field": "State", "type": "nominal"},
+                    {"field": "Commodities", "type": "nominal"}
+                ]
+            }
+        }
+    ]
+}
