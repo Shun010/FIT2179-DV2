@@ -1,0 +1,102 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "transparent",
+    "width": 800,
+    "height": 150,
+    "title": "Total National Gold Production - drag to select a year",
+    "data": {
+        "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/gold_prod_1851_2021_byState.csv"
+    },
+    "transform": [
+        {
+            "aggregate": [
+                {
+                    "op": "sum",
+                    "field": "Production",
+                    "as": "TotalProduction"
+                }
+            ],
+            "groupby": ["YEAR"]
+        }
+    ],
+    "layer": [
+        {
+            "encoding": {
+                "x": {"field": "YEAR", "type": "quantitative"},
+                "y": {"field": "TotalProduction", "type": "quantitative"}
+            },
+            "layer": [
+                {
+                    "mark": "line"
+                },
+                {
+                    "params": [{
+                        "name": "label",
+                        "select": {
+                        "type": "point",
+                        "encodings": ["x"],
+                        "nearest": true,
+                        "on": "mousemove"
+                        }
+                    }],
+                    "mark": "point",
+                    "encoding": {
+                        "opacity": {
+                            "condition": {
+                                "param": "label",
+                                "empty": false,
+                                "value": 1
+                            },
+                            "value": 0
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "transform": [
+                {
+                    "filter": {
+                        "param": "label",
+                        "empty": false
+                    }
+                }
+            ],
+            "layer": [
+                {
+                    "mark": "rule",
+                    "encoding": {
+                        "x": {
+                            "field": "YEAR",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "left",
+                        "dx": 5,
+                        "dy": -15
+                    },
+                    "encoding": {
+                        "x": {
+                            "field": "YEAR",
+                            "type": "quantitative"
+                        },
+                        "y": {
+                            "field": "TotalProduction",
+                            "type": "quantitative"
+                        },
+                        "text": {
+                            "field": "TotalProduction",
+                            "type": "quantitative",
+                            "format": ",.0f"
+                        }
+                    }
+                    
+                }
+            ]
+        }
+    ]
+}

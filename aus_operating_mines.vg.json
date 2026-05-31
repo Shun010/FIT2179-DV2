@@ -1,30 +1,31 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 450,
-    "height": 300,
+    "background": "transparent",
+    "width": "container",
+    "height": 500,
     "title": "Operating mines in Australia in 2015",
     "layer": [ 
         {
-        "data": {
-            "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
-            "format": {
-            "type": "topojson",
-            "feature": "STE_2016_AUST"
-            }
-        },
-        "transform": [
-            {
-            "calculate": "'Data is not available in ' + datum.properties.STE_NAME16",
-            "as": "note"
-            }
-        ],
-        "mark": {
-            "type": "geoshape",
-            "fill": "#ddd",
-            "stroke": "white",
-            "strokeWidth": 1
-        },
-        "encoding": {"tooltip": {"field": "note", "type": "nominal"}}
+            "data": {
+                "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "STE_2016_AUST"
+                }
+            },
+            "transform": [
+                {
+                    "calculate": "'Data is not available in ' + datum.properties.STE_NAME16",
+                    "as": "note"
+                }
+            ],
+            "mark": {
+                "type": "geoshape",
+                "fill": "#ddd",
+                "stroke": "white",
+                "strokeWidth": 1
+            },
+            "encoding": {"tooltip": {"field": "note", "type": "nominal"}}
         },
         {
             "data": {
@@ -34,7 +35,7 @@
                 "type": "circle",
                 "opacity": 0.5,
                 "size": 30,
-                "color": "orange"
+                "color": "#D55E00"
             },
             "encoding": {
                 "longitude": {"field": "Longitude", "type": "quantitative"},
@@ -44,6 +45,50 @@
                     {"field": "State", "type": "nominal"},
                     {"field": "Commodities", "type": "nominal"}
                 ]
+            }
+        },
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/operating_mines_feb2015.csv"
+            },
+            "transform": [
+                {
+                    "aggregate": [{"op": "count", "as": "mineCount"}],
+                    "groupby": ["State"]
+                },
+                {
+                    "lookup": "State",
+                    "from": {
+                        "data": {
+                            "values": [
+                                {"state": "WA", "longitude": 111.0, "latitude": -20.0},
+                                {"state": "QLD", "longitude": 152.0, "latitude": -18.0},
+                                {"state": "NSW", "longitude": 156.5, "latitude": -32.5},
+                                {"state": "VIC", "longitude": 152.5, "latitude": -38.5},
+                                {"state": "SA", "longitude": 133.5, "latitude": -35.0},
+                                {"state": "NT", "longitude": 137.0, "latitude": -13.5},
+                                {"state": "TAS", "longitude": 153.5, "latitude": -42.0}
+                            ]
+                        },
+                        "key": "state",
+                        "fields": ["longitude", "latitude"]
+                    }
+                },
+                {
+                    "calculate": "datum.State+ ': ' + datum.mineCount + ' mines'",
+                    "as": "label"
+                }
+            ],
+            "mark": {
+                "type": "text",
+                "fontSize": 20,
+                "fontWeight": "bold",
+                "color": "#333"
+            },
+            "encoding": {
+                "longitude": {"field": "longitude", "type": "quantitative"},
+                "latitude": {"field": "latitude", "type": "quantitative"},
+                "text": {"field": "label", "type": "nominal"}
             }
         }
     ]

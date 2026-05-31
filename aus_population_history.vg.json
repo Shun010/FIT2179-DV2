@@ -1,14 +1,67 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "transparent",
     "title": "Population in Australia, from 1800 to 1890",
-    "width": 300,
+    "width": "container",
+    "height": 300,
     "data": {"url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/population_history_AU.csv"},
-    "mark": "line",
-    "encoding": {
-        "x": {"field": "Year", "type": "quantitative"},
-        "y": {"field": "Population", "type": "quantitative"}
-    },
     "transform": [
         {"filter": "datum.Year >= 1800 && datum.Year <= 1890"}
+    ],
+    "layer": [
+        {
+            "mark": "line",
+            "encoding": {
+                "x": {
+                    "field": "Year", 
+                    "type": "quantitative",
+                    "axis": {
+                        "format": "d",
+                        "labelFlush": true
+                    },
+                    "title": "Population (thousand)"
+                },
+                "y": {
+                    "field": "Population", 
+                    "type": "quantitative",
+                    "axis": {
+                        "labelExpr": "datum.value / 1000 + 'k'"
+                    }
+                }
+            }
+        },
+        {
+            "data": {
+                "values": [
+                    {"year": 1851, "label": "Peak of Victorian Gold Rush"},
+                    {"year": 1860}
+                ]
+            },
+            "layer": [
+                {
+                    "mark": {"type": "rule", "color": "#D85A30", "strokeDash": [4, 3], "strokeWidth": 1.5},
+                    "encoding": {
+                        "x": {"field": "year", "type": "quantitative"}
+                    }
+                },
+                {
+                    "transform": [{"filter": "datum.label != null"}],
+                    "mark": {"type": "text", "align": "left", "dx": -180, "dy": 10, "fontSize": 13, "color": "#D85A30", "fontStyle": "italic"},
+                    "encoding": {
+                        "x": {"field": "year", "type": "quantitative"},
+                        "y": {"value": 40},
+                        "text": {"field": "label"}
+                    }
+                }
+            ]
+        },
+        {
+            "data": {"values": [{"x1": 1851, "x2": 1860}]},
+            "mark": {"type": "rect", "opacity": 0.15, "color": "#FFD700"},
+            "encoding": {
+                "x": {"field": "x1", "type": "quantitative"},
+                "x2": {"field": "x2"}
+            }
+        }
     ]
 }

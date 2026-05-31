@@ -1,6 +1,16 @@
 //Graph 1: Gold Production of Each State from 1851 to 2021
-var vg_1 = "gold_production_by_state.vg.json";
-vegaEmbed("#gold_production_state", vg_1).then(function(result) {
+var vg_1_1 = "gold_production_by_state.vg.json";
+vegaEmbed("#gold_production_state", vg_1_1).then(function(result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+var vg_1_2 = "gold_production.vg.json";
+vegaEmbed("#gold_production", vg_1_2).then(function(result) {
+// Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+}).catch(console.error);
+
+var vg_1_3 = "gold_prod_concat.vg.json";
+vegaEmbed("#gold_production_concat", vg_1_3).then(function(result) {
 // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 

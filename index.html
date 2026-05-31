@@ -12,107 +12,137 @@
         <title>Gold in Australia</title>
 
         <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class="page">
-            <div class="row">
-                <div>
-                    <h1>Gold in Australia</h1>
-                    <div class="section">
-                        <p>
-                            In 1851, gold discoveries first at Ophir in New South Wales and then at Ballarat and Bendigo in Victoria 
-                            triggered one of history's most dramatic mass migrations, transforming a fledgling colony into a thriving 
-                            nation almost overnight. More than 170 years later, gold remains central to Australia's economy, with the 
-                            country now one of the world's top producers and mines spanning from Western Australia to Queensland. This 
-                            visualisation traces that remarkable journey, exploring how gold production, trade, and exploration have 
-                            evolved from the first rush to the modern industry of today.
-                        </p>
-                        <p>
-                            The map tells a clear story of shifting dominance. In the 1850s, Victoria lit up as the heart of the rush, 
-                            peaking at 89 tonnes in 1856. But by the late 1800s, the spotlight moved west — Western Australia has since 
-                            produced 8,692 tonnes in total, more than three times Victoria's 2,535 tonnes, with its modern peak of 229 
-                            tonnes reached in 1997.
-                        </p>
-                    </div>
-                    <div class="section">
+            <h1>Gold in Australia</h1>
+            <p id="author_info">Created by Shun Kawada · Monash University · May 2026</p>
+            <div class="section">
+                <h2>Introduction</h2>
+                <p>
+                    In 1851, gold discoveries first at Ophir in New South Wales and then at Ballarat and Bendigo in Victoria triggered one of history's most dramatic mass migrations, transforming a fledgling colony into a thriving nation almost overnight. More than 170 years later, gold remains central to Australia's economy, with the country now one of the world's top producers and mines spanning from Western Australia to Queensland. This visualisation traces that remarkable journey, exploring how gold production, trade, and exploration have evolved from the first rush to the modern industry of today.
+                </p>
+            </div>
+            <div class="section">
+                <h2>Gold Production</h2>
+                <p>
+                    The map tells a clear story of shifting dominance. In the 1850s, Victoria lit up as the heart of the rush, peaking at 89 tonnes in 1856. But by the late 1800s, the spotlight moved west - Western Australia has since produced 8,692 tonnes in total, more than three times Victoria's 2,535 tonnes, with its modern peak of 229 tonnes reached in 1997.
+                </p>
+                <div id="gold_production_concat"></div>
+            </div>
+            <div class="section">
+                <div class="row">
+                    <div>
                         <h2>The Gold Rush and Australia's Population Growth</h2>
                         <p>
-                            Gold discovery in 1851 triggered Australia's greatest population boom — from 405,000 to over 1.1 million in 
-                            just a decade, as fortune-seekers flooded in from other countries.
+                            Australia's population history vividly reflects the Gold Rush's impact. After over six decades of slow colonial growth, the population stood at just 405,000 in 1850. The discovery of gold in 1851 triggered an immediate surge - numbers more than doubled to over 1.1 million by 1859, driven by migrants from Britain, China, and the Americas. This single decade of gold-fuelled immigration accelerated Australia's nation-building by a generation.
+                            Growth continued steadily through the 1860s and 1870s as many migrants who came for gold chose to stay, settling into farming, trade, and commerce. By 1890, Australia's population had surpassed 3 million - nearly eight times what it had been just four decades earlier. The Gold Rush did not just bring people; it built the cities, roads, and institutions that would form the foundation of modern Australia.
                         </p>
-                        <div id="aus_population_history"></div>
                     </div>
-                    <div class="section">
+                    <div id="aus_population_history"></div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="row">
+                    <div>
+                        <h2>Gold Rush and Cost of Living</h2>
+                        <p>
+                             Australia's cost of living surged dramatically in the wake of the gold rush. The Consumer Price Index (CPI), a measure of how much everyday goods and services cost, was just 1.83 when gold was first discovered in 1851, but shot up to 3.39 by 1855, nearly doubling in just four years. As tens of thousands of prospectors poured into the colonies, and there simply wasn't enough food, housing, or labour to go around. Merchants and landlords seized the moment, charging whatever the market would bear. But as the gold frenzy cooled, so the prices slowly falling back to pre-rush levels by 1879, then settling into a quiet stability through the 1880s. What this tells us is that the gold rush touched everyone, not just the miners - it made life more expensive, more chaotic, and ultimately more modern for ordinary Australians across the country.
+                        </p>
+                    </div>
+                    <div id="aus_CPI_history"></div>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Australia's Gold Mines Today</h2>
+                <p>
+                    The map shows 150 operating gold mines across Australia as of 2015. Western Australia dominates overwhelmingly, accounting for 90 mines - 60% of all operations - reflecting its status as the country's modern gold heartland. New South Wales (19 mines) and Queensland (15 mines) follow at a distant second and third, while Victoria, once the birthplace of the rush, now hosts just 9 active operations.
+                </p>
+                 <div id="aus_operating_mines"></div>
+            </div>
+            <div class="section">
+                <div class="row">
+                    <div>
                         <h2>Gold Ore Quality Through the Ages</h2>
                         <p>
-                            Early goldfields like Ballarat yielded over 17 g/t (grams of gold per tonne of rock), but as surface deposits 
-                            were exhausted, today's mines average just 3.79 g/t — requiring five times more rock to extract the same amount of gold.
-                        </p>
-                         <div id="aus_ore_grade_history"></div>
-                    </div>
-                    <div class="section">
-                        <h2>Gold Price vs Production Volume</h2>
-                        <div id="gold_price_production"></div>
-                        <p>
-                        Since 2000, gold prices in Australia have surged more than 11 times — from A$459 per ounce to over A$5,286 by 2025 — yet 
-                        production volume has grown only modestly, from an average of 64 tonnes per quarter in the 2000s to 76 tonnes in the 2020s. 
-                        Production peaked at 87.5 tonnes in late 2019 before plateauing, meaning Australia's soaring gold export earnings are driven 
-                        almost entirely by rising prices rather than increased output. Simply put, Australia is earning far more from gold today not
-                        because it mines more, but because gold is worth so much more.
+                            Australia's gold industry spans over 170 years of continuous extraction. When the Victorian rushes began in 1851, ore grades averaged around 16 g/t - meaning gold was relatively concentrated and accessible to hand tools and simple stamping mills. By the modern era (2001-2021), the median grade had fallen to just 2.3 g/t, roughly one-seventh of what early miners encountered. The ore grew leaner, but the industry grew larger: where nineteenth-century prospectors moved tonnes, today's operations move hundreds of millions, with Western Australia alone accounting for over 51% of all ore processed at major Australian mines on record. The industry has shifted from individual fortune-seekers to capital-intensive corporations wielding GPS-guided machinery and real-time geological modelling. 
                         </p>
                     </div>
-                    <div class="section">
-                        <h2>Global Gold Demand by Sector</h2>
-                        <p>
-                            Gold serves four distinct purposes: jewellery is the largest driver at 46%, reflecting consistent consumer demand. Investment 
-                            at 33% is far more volatile — swinging wildly with global uncertainty, from 617 tonnes in 2016 to just 181 tonnes in 2021. 
-                            Central banks have been buying at record levels, hitting 313 tonnes in 2024 as nations seek to reduce reliance on the US dollar. 
-                            Technology holds a steady 7.6%, driven by electronics and medical devices.
-                        </p>
-                        <div id="gold_demand"></div>
-                    </div>
+                    <div id="aus_ore_grade_history"></div>
                 </div>
-                <div>
-                    <div id="gold_production_state" class="section"></div>
-                    <div class="section">
-                        <h2>Gold Rush and the Cost of Living</h2>
+            </div>
+            <div class="section">
+                <div class="row">
+                    <div>
+                        <h2>Global Gold Demand by Sector</h2>
+                        <div id="gold_demand"></div>
                         <p>
-                            The gold rush didn't just bring wealth — it brought inflation. The sudden flood of migrants overwhelmed colonial supply chains, 
-                            nearly doubling the cost of living from 1.83 to 3.39 CPI between 1851 and 1855. As the frenzy subsided and infrastructure caught up, 
-                            prices gradually settled back down by 1870.
-                        </p>
-                        <div id="aus_CPI_history"></div>
-                    </div>
-                    <div class="section">
-                        <h2>Australia's Gold Mines Today</h2>
-                        <div id="aus_operating_mines"></div>
-                        <p>
-                            The map shows 150 operating gold mines across Australia as of 2015. Western Australia dominates overwhelmingly, accounting 
-                            for 90 mines — 60% of all operations — reflecting its status as the country's modern gold heartland. New South Wales (19 mines) 
-                            and Queensland (15 mines) follow at a distant second and third, while Victoria, once the birthplace of the rush, now hosts just 9 
-                            active operations.
+                            Gold's value extends well beyond the mine. Since 2010, jewellery has been the dominant driver of global consumption, accounting for over 8,900 tonnes - nearly double that of investment demand. Central banks have emerged as significant buyers in recent years, adding hundreds of tonnes annually as nations diversify reserves away from the US dollar. Technology - spanning electronics, medical devices, and semiconductors - contributes a smaller but steady share, underlining gold's irreplaceable role in modern industry. Looking ahead, demand is expected to grow further as gold's conductivity and corrosion resistance make it increasingly critical in next-generation technologies.
                         </p>
                     </div>
-                    <div class="section">
+                    <div>
                         <h2>World Gold Production Rankings</h2>
                         <div id="world_gold_rank"></div>
                         <p>
-                            The bar chart ranks the world's top gold-producing nations in 2024. China leads with 380 tonnes, followed by Russia at 310 tonnes. 
-                            Australia sits in third place with 290 tonnes — a remarkable achievement for a country of just 26 million people, and a testament 
-                            to how deeply gold mining is woven into the nation's economic fabric.
-                        </p>
-                    </div>
-                    <div class="section">
-                        <h2>Gold Exploration Expenditure by State</h2>
-                        <div id="gold_exploration_expenditure"></div>
-                        <p>
-                            Exploration spending — the industry's bet on Australia's future gold potential — has grown significantly since 1988, peaking at A$1.6 
-                            billion in 2021. Western Australia attracts nearly 70% of all investment, as companies remain confident the state still holds vast 
-                            undiscovered reserves.
+                            In 2024, Australia ranked 3rd among the world's gold-producing nations, outputting 290 tonnes - behind only China (380 t) and Russia (310 t), and comfortably ahead of Canada (200 t) and the United States (160 t). This podium position is the result of decades of sustained investment in large-scale mining, particularly in Western Australia. Notably, Australia's output comes from a comparatively small number of highly productive operations, making its per-mine efficiency among the highest globally. For a nation of 26 million people, maintaining third place in a field dominated by geopolitical heavyweights underscores just how central gold remains to Australia's export economy.                    
                         </p>
                     </div>
                 </div>
             </div>
+        
+            <div class="section">
+                <div class="row">
+                    <div>
+                        <h2>Gold Price vs Production Volume</h2>
+                        <p>
+                            Australia's gold price and production have not always moved together - and understanding why matters. Production peaked at nearly 87.5 tonnes per quarter in late 2019, driven by expanded mines across Western Australia, before easing slightly in the years that followed. Meanwhile, the gold price in Australian dollars rose from around A$399 per ounce in the late 1990s to over A$5,200 per ounce by 2025 - more than twelve times higher over just two and a half decades. This steady price rise has kept the industry profitable even as the ore in the ground has become harder to find and lower in quality, effectively making up for the extra effort required to process it. The relationship between price and production is not immediate - it takes years for higher prices to result in new mines, as building them is a long and costly process. What the data shows clearly, however, is that rising prices have continued to attract the investment needed to keep Australia's gold industry running well into the future.                 
+                        </p>
+                    </div>
+                    <div id="gold_price_production"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Gold Exploration Expenditure by State</h2>
+                <p>
+                    Exploration expenditure is the clearest forward-looking indicator of an industry's confidence in its own future - and by that measure, Australia's gold sector has never been more bullish. Total spending on gold exploration has surged from under $250 million in 1988 to over $1.5 billion per year by 2025, reflecting both rising gold prices and intensifying competition to secure the next generation of deposits. Western Australia utterly dominates this picture, accounting for over $17.4 billion of the cumulative expenditure recorded - more than four times the combined total of all other states. Queensland, Victoria, and the Northern Territory trail distantly in second, third, and fourth place respectively. The sharp acceleration from 2019 onward is particularly notable, coinciding with gold's sustained price rally and a global reassessment of resource security. For investors and policymakers alike, the exploration pipeline signals that Australia's position as a top-three global producer is not merely the legacy of historical fortune, but the product of ongoing and deliberate investment.
+                </p>
+                <div id="gold_exploration_expenditure"></div>
+            </div>
+            <p id="data_sources">
+                Data Sources:<br>
+                <a href="https://research-repository.rmit.edu.au/articles/dataset/A_Comprehensive_Dataset_for_Australian_Mine_Production_1799_to_2021/22724081">
+                    RMIT Research Repository - Australian Mine Production 1799-2021
+                </a><br>
+                <a href="https://www.abs.gov.au/statistics/people/population/historical-population/latest-release">
+                    Australian Bureau of Statistics - Historical Population
+                </a><br>
+                <a href="https://www.measuringworth.com/datasets/australiadata/">
+                    MeasuringWorth - Australian Economic Data
+                </a><br>
+                <a href="https://data.gov.au/data/dataset/65c0c042-1ba8-47a8-9793-4363672500b9">
+                    data.gov.au - Australian Gold Mines Dataset
+                </a><br>
+                <a href="https://ourworldindata.org/explorers/minerals?country=~OWID_WRL&Mineral=Gold&Metric=Production&Type=Mine&Share+of+global=false">
+                    Our World in Data - Global Gold Mine Production
+                </a><br>
+                <a href="https://www.industry.gov.au/publications/resources-and-energy-quarterly-december-2025">
+                    Department of Industry - Resources and Energy Quarterly December 2025
+                </a><br>
+                <a href="https://www.abs.gov.au/statistics/industry/mining/mineral-and-petroleum-exploration-australia/latest-release">
+                    Australian Bureau of Statistics - Mineral and Petroleum Exploration Australia
+                </a><br>
+                <a href="https://www.gold.org/goldhub/data/gold-demand-by-country">
+                    World Gold Council - Gold Demand by Country
+                </a><br>
+                <a href="https://data.gov.au/data/dataset/australias-identified-mineral-resources-2025">
+                    data.gov.au - Australia's Identified Mineral Resources 2025
+                </a>
+            </p>
         </div>
     </body>
 </html>

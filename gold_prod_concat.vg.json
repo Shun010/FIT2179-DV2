@@ -1,0 +1,209 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "transparent",
+    "autosize": {"type": "fit", "contains": "padding"},
+    "vconcat": [
+        {
+            "width": 1090,
+            "height": 400,
+            "title": "Gold production by State in Australia, from 1851 to 2021",
+            "projection": {"type": "mercator"},
+            "layer": [ 
+                {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
+                    "format": {
+                    "type": "topojson",
+                    "feature": "STE_2016_AUST"
+                    }
+                },
+                "transform": [
+                    {
+                    "calculate": "'Data is not available in ' + datum.properties.STE_NAME16",
+                    "as": "note"
+                    }
+                ],
+                "mark": {
+                    "type": "geoshape",
+                    "fill": "#ddd",
+                    "stroke": "white",
+                    "strokeWidth": 1
+                },
+                "encoding": {"tooltip": {"field": "note", "type": "nominal"}}
+                },
+                {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/gold_prod_1851_2021_byState.csv"
+                },
+                "transform": [
+                    {
+                    "lookup": "State",
+                    "from": {
+                        "data": {
+                        "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/AUS_MAP.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "STE_2016_AUST"
+                        }
+                        },
+                        "key": "properties.STE_NAME16"
+                    },
+                    "as": "geo"
+                    },
+                    {
+                        "filter": {
+                            "param": "label",
+                            "empty": true
+                        }
+                    }
+                ],
+                "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+                "encoding": {
+                    "shape": {"field": "geo", "type": "geojson"},
+                    "color": {
+                        "field": "Production",
+                        "type": "quantitative",
+                        "scale": {"scheme": "goldorange"},
+                        "title": "Production (tonnes)",
+                        "legend": {
+                            "orient": "top",
+                            "direction": "horizontal"
+                        }
+                    },
+                    "tooltip": [
+                    {"field": "State", "type": "nominal", "title": "State"},
+                    {"field": "Production", "type": "quantitative", "title": "Production (tonnes)", "format": ","},
+                    {"field": "YEAR", "type": "quantitative", "title": "Year"}
+                    ]
+                }
+                }
+            ]
+        },
+        {
+            "width": 1090,
+            "height": 200,
+            "title": "Total National Gold Production - drag to select a year",
+            "data": {
+                "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/gold_prod_1851_2021_byState.csv"
+            },
+            "transform": [
+                {
+                    "aggregate": [
+                        {
+                            "op": "sum",
+                            "field": "Production",
+                            "as": "TotalProduction"
+                        }
+                    ],
+                    "groupby": ["YEAR"]
+                }
+            ],
+            "layer": [
+                {
+                    "encoding": {
+                        "x": {
+                            "field": "YEAR", 
+                            "type": "quantitative",
+                            "scale": {
+                                "domain": [1851, 2021],
+                                "nice": false
+                            },
+                            "axis": {
+                                "format": "d",
+                                "labelFlush": true
+                            }
+                        },
+                        "y": {
+                            "field": "TotalProduction", 
+                            "type": "quantitative",
+                            "axis": {
+                                "labelExpr": "datum.value / 1000 + 'k'",
+                                "titleAngle": 0,
+                                "titleAlign": "left",
+                                "titleX": -30,
+                                "titleY": -10
+                            },
+                            "title": "Total Production (thousand tonnes)"
+                        }
+                    },
+                    "layer": [
+                        {
+                            "mark": {
+                                "type": "line",
+                                "color": "#0072B2"
+                            }
+                        },
+                        {
+                            "params": [{
+                                "name": "label",
+                                "select": {
+                                "type": "point",
+                                "encodings": ["x"],
+                                "nearest": true,
+                                "on": "mousemove"
+                                }
+                            }],
+                            "mark": "point",
+                            "encoding": {
+                                "opacity": {
+                                    "condition": {
+                                        "param": "label",
+                                        "empty": false,
+                                        "value": 1
+                                    },
+                                    "value": 0
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "label",
+                                "empty": false
+                            }
+                        }
+                    ],
+                    "layer": [
+                        {
+                            "mark": "rule",
+                            "encoding": {
+                                "x": {
+                                    "field": "YEAR",
+                                    "type": "quantitative",
+                                    "title": "Year"
+                                }
+                            }
+                        },
+                        {
+                            "mark": {
+                                "type": "text",
+                                "align": "left",
+                                "dx": 5,
+                                "dy": -15
+                            },
+                            "encoding": {
+                                "x": {
+                                    "field": "YEAR",
+                                    "type": "quantitative"
+                                },
+                                "y": {
+                                    "field": "TotalProduction",
+                                    "type": "quantitative"
+                                },
+                                "text": {
+                                    "field": "TotalProduction",
+                                    "type": "quantitative",
+                                    "format": ",.0f"
+                                }
+                            }
+                            
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

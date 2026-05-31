@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+     "background": "transparent",
     "title": "Top 10 Australia Gold Export Country",
     "data": {
         "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/au_gold_export.csv"

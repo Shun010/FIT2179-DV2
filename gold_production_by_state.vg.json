@@ -1,7 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 340,
-  "height": 340,
+  "background": "transparent",
+  "width": "container",
+  "height": 400,
+  "autosize": {"type": "fit", "contains": "padding"},
   "title": "Gold production by State in Australia, from 1851 to 2021",
   "projection": {"type": "mercator"},
   "params": [

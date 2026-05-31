@@ -1,6 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 350,
+    "background": "transparent",
+    "width": "container",
+    "height": 340,
     "data": {
         "url": "https://raw.githubusercontent.com/Shun010/FIT2179-DV2/refs/heads/main/Datasets/world_gold_production_2024.csv"
     },
@@ -30,7 +32,7 @@
         "color": {
             "condition": {
                 "test": "datum.country === 'Australia'",
-                "value": "#FFD700"
+                "value": "#D55E00"
             },
             "value": "#A9A9A9"
         }
