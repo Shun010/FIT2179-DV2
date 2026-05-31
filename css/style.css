@@ -1,0 +1,27 @@
+body {
+    background-color: rgb(255, 251, 245);
+}
+
+h1 {
+    font-size: 4em;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 1.8em;
+    font-family: "DM Sans", sans-serif;
+}
+
+p {
+    font-size: 1.2em;
+    font-family: sans-serif;
+}
+
+#data_sources {
+    color: grey;
+}
+
+#data_sources a{
+    color: rgb(113, 122, 154);
+}

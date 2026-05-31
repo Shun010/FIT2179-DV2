@@ -1,14 +1,25 @@
 .page {
-    padding: 0 180px;   /* <-- controls left/right space */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;   /* <-- controls left/right space */
 }
 
 
 .row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;          /* <-- controls gap between columns */
-    align-items: start;
-    margin-bottom: 40px;
+    align-items: stretch;
+    gap: 2rem;          /* <-- controls gap between columns */
+}
+
+.row > div:first-child {
+    display: flex;
+    flex-direction: column;
+}
+
+.row > div:first-child p {
+    margin-top: auto;
+    margin-bottom: 0;
 }
 
 .full-width {
@@ -16,5 +27,59 @@
 }
 
 .section {
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
 }
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 0.8rem; 
+}
+
+
+#gold_production_state {
+    width: 100%;
+}
+
+#aus_population_history {
+    min-width: 0; /* make the width flexible when the page is narrowed */
+}
+
+#aus_operating_mines {
+    width: 100%;
+}
+
+#world_gold_rank {
+    width: 100%;
+}
+
+#gold_demand {
+    width: 100%;
+}
+
+#gold_price_production {
+    width: 100%;
+}
+
+#gold_exploration_expenditure {
+    width: 100%;
+}
+
+#gold_production_concat {
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 4px;
+}
+
+#author_info {
+    margin-bottom: 3em;
+}
+
+#data_sources {
+    margin-top: 8em;
+}
+
+/* * {
+    outline: 1px solid red;
+} */
